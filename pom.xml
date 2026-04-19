@@ -156,17 +156,15 @@
         </plugins>
     </build>
 
-         <distributionManagement>
-    <repository>
-      <id>maven-releases</id>
-      <name>maven-releases</name>
-      <url>http://18.206.93.194:8081/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>maven-snapshots</id>
-      <name>maven-snapshots</name>
-      <url>http://18.206.93.194:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
+<distributionManagement>
+  <snapshotRepository>
+    <id>maven-snapshots</id>   <!-- ✅ must match settings.xml server id -->
+    <url>http://18.206.93.194:8081/repository/maven-snapshots/</url>
+  </snapshotRepository>
+  <repository>
+    <id>maven-releases</id>    <!-- ✅ must match settings.xml server id -->
+    <url>http://18.206.93.194:8081/repository/maven-releases/</url>
+  </repository>
 </distributionManagement>
 
 
