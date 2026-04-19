@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SCANNER_HOME = tool 'sonar-scanner'
+        SCANNER_HOME = tool 'sonar-token'
         // NVD_API_KEY = credentials('nvd-api-key')  // Jenkins secret text credential
     }
 
@@ -32,8 +32,8 @@ pipeline {
 
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonar-scanner') {
-                    sh "${env.SCANNER_HOME}/bin/sonar-scanner \
+                withSonarQubeEnv('sonar-token') {
+                    sh "${env.SCANNER_HOME}/bin/sonar-token \
                         -Dsonar.projectKey=EKART \
                         -Dsonar.projectName=EKART \
                         -Dsonar.java.binaries=target/classes"
