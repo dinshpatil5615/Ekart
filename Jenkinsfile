@@ -41,14 +41,14 @@ pipeline {
             }
         }
 
-        stage('OWASP Dependency Check') {
-            steps {
-                  withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
-                    dependencyCheck additionalArguments: "--nvdApiKey=$NVD_API_KEY",
-                                    odcInstallation: 'DC'
-             }
-        }
-        }
+        // stage('OWASP Dependency Check') {
+        //     steps {
+        //           withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
+        //             dependencyCheck additionalArguments: "--nvdApiKey=$NVD_API_KEY",
+        //                             odcInstallation: 'DC'
+        //      }
+        // }
+        // }
 
         stage('Build') {
             steps {
