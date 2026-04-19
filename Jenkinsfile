@@ -76,7 +76,7 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
+                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                    sh 'docker login -u dineshpatil0908 -p ${dockerhubpwd}'}
                    sh 'docker push dineshpatil0908/ekart:latest'
                 }
