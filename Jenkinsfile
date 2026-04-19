@@ -84,7 +84,7 @@ pipeline {
             sh 'docker push dineshpatil0908/ekart:latest'
         }
     }
-}}
+}
         stage('EKS and Kubectl configuration'){
             steps{
                 script{
