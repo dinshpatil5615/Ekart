@@ -73,15 +73,18 @@ pipeline {
             }
         }
 
-        stage('Push image to Hub'){
-            steps{
-                script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u dineshpatil0908 -p ${dockerhubpwd}'}
-                   sh 'docker push dineshpatil0908/ekart:latest'
-                }
-            }
+        stage('Push image to Hub') {
+            steps {
+                script {
+                        withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'DOCKERHUB_PWD')]) {
+                        sh '''
+                            echo $DOCKERHUB_PWD | docker login -u dineshpatil0908 --password-stdin
+                        '''
+                        }
+            sh 'docker push dineshpatil0908/ekart:latest'
         }
+    }
+}}
         stage('EKS and Kubectl configuration'){
             steps{
                 script{
