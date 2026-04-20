@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
-        NVD_API_KEY = credentials('nvd-api-key')  // Jenkins secret text credential
+        // NVD_API_KEY = credentials('nvd-api-key')  // Jenkins secret text credential
     }
 
     tools {
@@ -41,21 +41,21 @@ pipeline {
             }
         }
 
-        stage('OWASP Dependency Check') {
-            steps {
-                withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
-                    dependencyCheck additionalArguments: "--nvdApiKey ${NVD_API_KEY} --scan target/ --format HTML --format XML --project EKART --out .", 
-                                    odcInstallation: 'DC'
-                }
-            }
-            post {
-                always {
-                    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-                    archiveArtifacts artifacts: '**/dependency-check-report.html',
-                                     allowEmptyArchive: true
-                }
-            }
-        }
+        // stage('OWASP Dependency Check') {
+        //     steps {
+        //         withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
+        //             dependencyCheck additionalArguments: "--nvdApiKey ${NVD_API_KEY} --scan target/ --format HTML --format XML --project EKART --out .", 
+        //                             odcInstallation: 'DC'
+        //         }
+        //     }
+        //     post {
+        //         always {
+        //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //             archiveArtifacts artifacts: '**/dependency-check-report.html',
+        //                              allowEmptyArchive: true
+        //         }
+        //     }
+        // }
 
         stage('Build') {
             steps {
