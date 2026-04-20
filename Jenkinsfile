@@ -44,11 +44,11 @@ pipeline {
         stage('OWASP Dependency Check') {
             steps {
                 dependencyCheck additionalArguments: '''
-                    --scan target/ \
-                    --format HTML \
-                    --format XML \
-                    --project EKART \
-                    --out .
+                    -s target/
+                    -f HTML
+                    -f XML
+                    --project EKART
+                    -o .
                 ''', odcInstallation: 'DC'
             }
             post {
