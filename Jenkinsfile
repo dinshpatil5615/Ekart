@@ -65,13 +65,17 @@ pipeline {
         }
         
 
-        stage('build and Tag docker image') {
+        stage('Push Image to Hub') {
             steps {
-                script {
-                        sh "docker build -t dineshpatil0908/ekart:latest -f docker/Dockerfile ."
-                    }
-            }
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'DOCKERHUB_PWD')]) {
+                    sh '''
+                        echo $DOCKERHUB_PWD | docker login -u dineshpatil0908 --password-stdin
+                        docker push dineshpatil0908/ekart:latest
+                        docker logout
+                    '''
+                }
         }
+}
 
         stage('Push image to Hub') {
             steps {
