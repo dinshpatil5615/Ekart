@@ -43,16 +43,13 @@ pipeline {
 
         stage('OWASP Dependency Check') {
             steps {
-                withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
-                    dependencyCheck additionalArguments: '''
-                        --scan target/ \
-                        --format HTML \
-                        --format XML \
-                        --project EKART \
-                        --out . \
-                        --nvdApiKey ''' + NVD_API_KEY + '''
-                    ''', odcInstallation: 'DC'
-                }
+                dependencyCheck additionalArguments: '''
+                    --scan target/ \
+                    --format HTML \
+                    --format XML \
+                    --project EKART \
+                    --out .
+                ''', odcInstallation: 'DC'
             }
             post {
                 always {
