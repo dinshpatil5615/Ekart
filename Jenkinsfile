@@ -43,13 +43,17 @@ pipeline {
 
         stage('OWASP Dependency Check') {
             steps {
-                dependencyCheck additionalArguments: '''
-                    -s target/
-                    -f HTML
-                    -f XML
-                    --project EKART
-                    -o .
-                ''', odcInstallation: 'DC'
+                withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
+                    sh '''
+                        /var/lib/jenkins/tools/org.jenkinsci.plugins.DependencyCheck.tools.DependencyCheckInstallation/DC/bin/dependency-check.sh \
+                        --nvdApiKey $NVD_API_KEY \
+                        --scan target/ \
+                        --format HTML \
+                        --format XML \
+                        --project EKART \
+                        --out .
+                    '''
+                }
             }
             post {
                 always {
