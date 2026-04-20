@@ -49,14 +49,15 @@ pipeline {
                         --format HTML \
                         --format XML \
                         --project EKART \
-                        --out dependency-check-report
+                        --out . \
+                        --nvdApiKey ''' + NVD_API_KEY + '''
                     ''', odcInstallation: 'DC'
                 }
             }
             post {
                 always {
-                    dependencyCheckPublisher pattern: '**/dependency-check-report/dependency-check-report.xml'
-                    archiveArtifacts artifacts: '**/dependency-check-report/dependency-check-report.html',
+                    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                    archiveArtifacts artifacts: '**/dependency-check-report.html',
                                      allowEmptyArchive: true
                 }
             }
