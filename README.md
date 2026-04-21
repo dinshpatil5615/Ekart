@@ -14,7 +14,7 @@
 
 ## 📌 Project Overview
 
-Ekart is a microservices-based e-commerce platform built in **Java (Spring Boot)**. Each service is independently deployable, containerized using Docker, and orchestrated on **Amazon EKS (Elastic Kubernetes Service)**. The entire infrastructure is provisioned using **Terraform** and deployments are automated via a **Jenkins CI/CD pipeline** with integrated security scanning.
+Ekart is a microservices-based e-commerce platform built in **Java (Spring Boot)**. Each service is independently deployable, containerized using **Docker**, and orchestrated on **Amazon EKS (Elastic Kubernetes Service)**. The entire infrastructure is provisioned using **Terraform** and deployments are automated via a **Jenkins CI/CD pipeline** with integrated security scanning.
 
 ---
 
