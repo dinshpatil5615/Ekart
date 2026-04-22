@@ -54,7 +54,7 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t dineshpatil0908/ekart:latest .'
+                sh 'docker build -t dineshpatil0908/ekart:latest ./docker'
             }
         }
 
