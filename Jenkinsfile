@@ -14,7 +14,8 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/dinshpatil5615/Ekart.git'
+                git branch: 'main',
+                url: 'https://github.com/dinshpatil5615/eks-cluster-deployment.git'
             }
         }
 
