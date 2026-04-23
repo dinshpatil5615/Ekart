@@ -159,11 +159,11 @@
 <distributionManagement>
   <snapshotRepository>
     <id>maven-snapshots</id>   <!-- ✅ must match settings.xml server id -->
-    <url>http://44.198.60.58:8081/repository/maven-snapshots/</url>
+    <url>http://13.223.100.90:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
   <repository>
     <id>maven-releases</id>    <!-- ✅ must match settings.xml server id -->
-    <url>http://44.198.60.58:8081/repository/maven-releases/</url>
+    <url>http://13.223.100.90:8081/repository/maven-releases/</url>
   </repository>
 </distributionManagement>
 
